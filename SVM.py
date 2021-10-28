@@ -50,4 +50,4 @@ y_pred = svclassifier.predict(X_test)
 
 score = accuracy_score(y_pred, y_test)
 print("SVM 모델의 정확도: ", score)
-
+ 
