@@ -1,5 +1,6 @@
 import csic_parser
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import f1_score
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.tree import DecisionTreeClassifier
 
@@ -49,5 +50,7 @@ dtree = DecisionTreeClassifier(
 dtree.fit(X_train, y_train)
 
 y_pred_dt = dtree.predict(X_test)
-score = accuracy_score(y_pred_dt,y_test)
-print("DecisionTree 모델의 정확도 : ", score)
+score = accuracy_score(y_pred_dt, y_test)
+f1 = f1_score(y_pred_dt, y_test)
+print("Decision Tree 모델의 정확도 : ", score)
+print("Decision Tree 모델의 F1 score:", f1)

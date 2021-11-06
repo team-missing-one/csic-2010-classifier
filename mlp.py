@@ -1,5 +1,6 @@
 import csic_parser
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import f1_score
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.neural_network import MLPClassifier
 
@@ -59,4 +60,6 @@ for i in range(1, 101):
 
 y_pred_mlp = mlp.predict(X_test)
 score = accuracy_score(y_pred_mlp, y_test)
+f1 = f1_score(y_pred_mlp, y_test)
 print("MLP 모델의 정확도:", score)
+print("MLP 모델의 F1 score:", f1)
