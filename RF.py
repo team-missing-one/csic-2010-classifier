@@ -1,5 +1,6 @@
 import csic_parser
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import f1_score
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.ensemble import RandomForestClassifier
 
@@ -51,4 +52,6 @@ rf.fit(X_train, y_train)
 
 y_pred_rf = rf.predict(X_test)
 score = accuracy_score(y_pred_rf, y_test)
-print("RF 모델의 정확도:", score)
+f1 = f1_score(y_pred_rf, y_test)
+print("Random Forest 모델의 정확도:", score)
+print("Random Forest 모델의 F1 score:", f1)

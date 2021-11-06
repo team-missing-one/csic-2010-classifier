@@ -1,8 +1,11 @@
 import csic_parser
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import f1_score
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import AdaBoostClassifier
+
+
 anomaly_train_raw = "anomal_train.txt"
 anomaly_test_raw = "anomal_test.txt"
 normal_train_raw = "norm_train.txt"
@@ -58,4 +61,6 @@ ada_model.fit(X_train, y_train)
 
 y_pred_ada = ada_model.predict(X_test)
 score = accuracy_score(y_pred_ada, y_test)
-print("ada 모델의 정확도:", score)
+f1 = f1_score(y_pred_ada, y_test)
+print("ADA-BOOST의 정확도:", score)
+print("ADA-BOOST의 F1 score:", f1)

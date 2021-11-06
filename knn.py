@@ -1,5 +1,6 @@
 import csic_parser
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import f1_score
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.neighbors import KNeighborsClassifier
 
@@ -51,4 +52,6 @@ knn = KNeighborsClassifier(
 knn.fit(X_train, y_train)
 y_pred_knn = knn.predict(X_test)
 score = accuracy_score(y_pred_knn, y_test)
+f1 = f1_score(y_pred_knn, y_test)
 print("KNN 모델의 정확도:", score)
+print("KNN 모델의 F1 score:", f1)

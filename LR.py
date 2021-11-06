@@ -1,5 +1,6 @@
 import csic_parser
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import f1_score
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 
@@ -51,4 +52,6 @@ lr.fit(X_train, y_train)
 
 y_pred_lr = lr.predict(X_test)
 score = accuracy_score(y_pred_lr, y_test)
-print("lr 모델의 정확도:", score)
+f1 = f1_score(y_pred_lr, y_test)
+print("Logistic Regression 모델의 정확도:", score)
+print("Logistic Regression 모델의 F1 score:", f1)
