@@ -46,8 +46,9 @@ X_test = vectorizer.transform(X_test)
 svclassifier = SVC(kernel='linear', degree=8)  
 svclassifier.fit(X_train, y_train) 
 
-y_pred = svclassifier.predict(X_test)  
-
-score = accuracy_score(y_pred, y_test)
-print("SVM 모델의 정확도: ", score)
+y_pred_svm = svm.predict(X_test)
+score = accuracy_score(y_pred_svm, y_test)
+f1 = f1_score(y_pred_svm, y_test)
+print("SVM 모델의 정확도:", score)
+print("SVM Forest 모델의 F1 score:", f1)
 
