@@ -1,9 +1,11 @@
 import csic_parser
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import f1_score
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
+from sklearn.svm import LinearSVC
 
 anomaly_train_raw = "anomal_train.txt"
 anomaly_test_raw = "anomal_test.txt"
@@ -43,10 +45,10 @@ vectorizer.fit(X_train)
 X_train = vectorizer.transform(X_train)
 X_test = vectorizer.transform(X_test)
 
-svclassifier = SVC(kernel='linear', degree=8)  
-svclassifier.fit(X_train, y_train) 
+svclassifier = LinearSVC(random_state=1, tol=1e-5, C=1)
+svclassifier.fit(X_train, y_train)
 
-y_pred_svm = svm.predict(X_test)
+y_pred_svm = svclassifier.predict(X_test)
 score = accuracy_score(y_pred_svm, y_test)
 f1 = f1_score(y_pred_svm, y_test)
 print("SVM 모델의 정확도:", score)
